@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>Pureza</title>
+</head>
+<body>
+    <!-- Nav -->
+<div id="Home" class="container">  
+    <header>
+            <div class="logo--wrapper">
+                <img src="../img/logo.png" alt="logo" class="logo">
+            </div>
+            <nav class="navbar">
+                <div class="hamburger--container">
+                    <div class="hamburger--line line--1"></div>
+                    <div class="hamburger--line line--2"></div>
+                    <div class="hamburger--line line--3"></div>
+                </div>
+                <ul class="ul--navlinks">
+                    <li><a href="#Home">Pureza</a></li>
+                    <li><a href="#CoreValues">Our Values</a></li>
+                    <li><a href="#Help">Pollution Tracker</a></li>
+                    <li><a href="#howtohelp">How to Help</a></li>
+                    <li><a href="#Contact">Contact Us / Donate</a></li>
+                </ul>
+            </nav>
+    </header>
+</div>  
+<section id="CoreValues">
+<h1>What We Believe In</h1>
+<div>
+<h3>Life</h3>
+<p>We aim preserve all forms of life on the planet</p>
+</div>
+<div>
+<h3>Unity</h3>
+<p>Uniting nations to save the global community</p>
+</div>
+<div>
+<h3>Future</h3>
+<p>Setting present foundations for Future Generations</p>
+</div>
+</section>
+<section id="Help">
+  <div class="container2">
+    <fieldset>
+      <form action="/" method="post">
+        <input name="country" type="text" class="ghost-input" placeholder="Enter a Country" required>
+        <input name="state" type="text" class="ghost-input" placeholder="Enter a State" required>
+        <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+        <input type="submit" class="ghost-button" value="Get Air">
+        <% if(air !== null){ %>
+          <p><%= air %></p>
+        <% } %>
+    
+        <% if(error !== null){ %>
+          <p><%= error %></p>
+        <% } %>
+      </form>
+      
+      <div id="air"></div>
+    </fieldset>
+  </div>
+  <img src="/img/air.png">
+</section>
+<section id="howtohelp">
+<div class="container3">
+    <h1>How to Help</h1>
+    <div class="box">
+        <i class="fas fa-car fa-3x"></i>
+        <h3>No Car Day</h3>
+        <p>No Car Day’s main objective is to promote public transportation. Public transportation helps to conserve energy and have lower emission because the number of vehicles has been reduced.</p>
+    </div>
+    <div class="box">
+        <i class="fas fa-drumstick-bite fa-3x"></i>
+        <h3>Meatless Monday</h3>
+        <p>Meatless Monday is an international campaign that encourages people to not eat meat on Mondays to improve their health and the health of the planet.</p>
+    </div>
+    <div class="box">
+        <i class="fas fa-tree fa-3x"></i>
+        <h3>Plant a Tree</h3>
+        <p>What would happen if all 7.7 billion people planted a tree? In as little as 30 years, entire woodlands and forests could be stablished.</p>
+    </div>
+</div>
+</section>
+<section id="Contact">
+    <div class="formImage">
+      <div>
+        <h2>Our Personal Information</h2>
+        <hr>
+        <h3><i class="fas fa-phone"></i>(980) 208-7723</h3>
+        <h3><i class="fas fa-envelope"></i>pureza555@gmail.com</h3>
+        <h3><i class="fas fa-map-marker-alt"></i>6008 Corktree Court</h3>
+      </div>
+    </div>
+    <form name="form" action="/users" onsubmit="validateForm()" method="POST">
+       <div class="contact-items">
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name" placeholder="Your Name...">
+       </div>
+       <div class="contact-items">
+        <label for="lastname">Last name:</label>
+        <input id="lastname" type="text" name="lastname" placeholder="Your Last Name...">
+       </div> 
+       <div class="contact-items">
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" placeholder="Your Email...">
+       </div>
+       <div class="contact-items">
+        <label for="message">Leave us a message</label>
+        <textarea id="message" name="message" cols="30" rows="10" placeholder="Type a message"></textarea>
+       </div>
+       <div class="buttons-container">
+       <button class="btn" onclick="test()" type="submit">Submit</button>
+       <button class="btn2" onclick="window.location.href='https://www.paypal.com/us/home'" target="_blank"></button>
+      </div>
+    </form>
+  </section>
+<footer id="footer">
+        <p>Pureza | &copy; 2020, All Rights Reserved</p>
+        <div>
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+</footer>
+<script>
+// Navbar
+const hamburgerIcon = document.querySelector(".hamburger--container");
+const navBar = document.querySelector(".navbar");
+
+hamburgerIcon.addEventListener('click', () => {
+    navBar.classList.toggle("change")
+});
+
+
+
+ //Form Validation
+function validateForm() {
+    var name = document.forms["form"]["name"].value;
+    var lastName = document.forms["form"]["lastname"].value;
+    var email = document.forms["form"]["email"].value
+    if (name == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    if (lastName == "") {
+        alert("Last name must be filled out");
+        return false;
+    }
+    if(email == ""){
+        alert("Email must be filled out");
+        return false;
+    }
+}
+
+function test() {
+  return alert("This is working");
+} 
+
+
+</script>
+</body>
+</html>
